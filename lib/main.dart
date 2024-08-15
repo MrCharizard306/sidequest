@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget{
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.deepPurple,
         body:  Center(
           child: GestureDetector(
             onTap: (){
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget{
               height: 300,
               width: 300,
               decoration: BoxDecoration(
-                color: Colors.deepPurple,
+                color: Color.fromRGBO(255, 160, 35, 100),
                 borderRadius: BorderRadius.circular(20),
               ),
               padding: EdgeInsets.all(125),
