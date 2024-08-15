@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "787419964167",
+    "project_id": "sidequest-c3199",
+    "storage_bucket": "sidequest-c3199.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787419964167:android:7dcae52f2e372466759ba2",
+        "android_client_info": {
+          "package_name": "sidequest.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPIvkSXh0YNxFBbTHVvAAIoouNhZ_SFDU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
