@@ -1,10 +1,15 @@
+
+
 import 'package:flutter/material.dart';
+import 'package:sidequest/components/my_button.dart';
 import 'package:sidequest/components/my_textfield.dart';
 
 class LoginPage extends StatelessWidget{
   LoginPage({super.key});
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
+
+  void signUserIn(){} // sing user in
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -27,6 +32,10 @@ class LoginPage extends StatelessWidget{
           MyTextField(controller: usernameController, hintText: 'Username', obsureText: false),
           const SizedBox(height: 10,),
           MyTextField(controller: usernameController, hintText: 'Password', obsureText: true),
+          const SizedBox(height: 10,),
+          MyButton(
+            onTap: signUserIn,
+          )
               
           ])
 
