@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:sidequest/login.dart';
 import 'firebase_options.dart';
 
 
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget{
   Widget build(BuildContext context){
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+<<<<<<< Updated upstream
       home: Scaffold(
         
         backgroundColor: Colors.deepPurple,
@@ -45,6 +47,9 @@ class MyApp extends StatelessWidget{
           ),
         ),
       ),
+=======
+      home: LoginPage(),
+>>>>>>> Stashed changes
     );
   }
 }
