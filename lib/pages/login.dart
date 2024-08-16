@@ -1,15 +1,22 @@
 
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:sidequest/components/my_button.dart';
 import 'package:sidequest/components/my_textfield.dart';
 
 class LoginPage extends StatelessWidget{
   LoginPage({super.key});
-  final usernameController = TextEditingController();
+  final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  void signUserIn(){} // sing user in
+  void signUserIn() async{
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: emailController.text, 
+      password: passwordController.text,
+      );
+  } // sin in user in
 
   void signUp(){}
 
@@ -33,9 +40,10 @@ class LoginPage extends StatelessWidget{
             ),
             const SizedBox(height: 25),
 
-          MyTextField(controller: usernameController, hintText: 'Username', obsureText: false),
+          MyTextField(controller: emailController, hintText: 'Email', obsureText: false),
           const SizedBox(height: 10,),
-          MyTextField(controller: usernameController, hintText: 'Password', obsureText: true),
+          
+          MyTextField(controller: passwordController, hintText: 'Password', obsureText: true),
           const SizedBox(height: 10,),
           MyButton(
             onTap: signUserIn,
