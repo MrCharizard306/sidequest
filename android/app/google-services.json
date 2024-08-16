@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:787419964167:android:7dcae52f2e372466759ba2",
         "android_client_info": {
-          "package_name": "sidequest.app"
+          "package_name": "com.example.sidequest"
         }
       },
       "oauth_client": [],

@@ -10,20 +10,24 @@ class LoginPage extends StatelessWidget{
   final passwordController = TextEditingController();
 
   void signUserIn(){} // sing user in
+
+  void signUp(){}
+
+
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      backgroundColor: Colors.deepPurple[300],
+      backgroundColor: Colors.grey[300],
       body: SafeArea(
         child: Center(
           child: Column(
             children: [
-              const SizedBox(height: 50,),
+              const SizedBox(height: 200,),
 
             Text(
-              'Welcome back you\'ve been missed',
+              'Welcome back you\'ve been missed!',
               style: TextStyle(
-                color: Colors.white,
+                color: Colors.black,
                 fontSize:  16,
               ),
             ),
@@ -35,24 +39,30 @@ class LoginPage extends StatelessWidget{
           const SizedBox(height: 10,),
           MyButton(
             onTap: signUserIn,
-          )
-              
-          ])
+          ),
+          const SizedBox(height: 50),
 
-        )
+          // sign up
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              Text('Not a member?'),
+              SizedBox(width: 4),
+
+              Text(
+                'Register now',
+                style: TextStyle(
+                  color: Colors.blue, fontWeight: FontWeight.bold
+                  ),
+                ),
+              ],
+            )
+          ],
+        ),
+      ),      
+    ),
+  );
 
 
-
-      )
-        //Welcome Back
-        // Username textfiedl
-
-        //password text
-
-        // sing in button
-        //not a member? registar now
-      
-      
-    );
   }
 }
