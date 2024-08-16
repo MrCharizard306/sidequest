@@ -2,9 +2,10 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:sidequest/auth_page.dart';
+import 'package:sidequest/pages/auth_page.dart';
+import 'package:sidequest/pages/home_page.dart';
 import 'package:sidequest/pages/login.dart';
-import 'firebase_options.dart';
+import 'pages/firebase_options.dart';
 
 
 void main() async{
