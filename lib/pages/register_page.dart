@@ -6,19 +6,19 @@ import 'package:flutter/material.dart';
 import 'package:sidequest/components/my_button.dart';
 import 'package:sidequest/components/my_textfield.dart';
 
-class LoginPage extends StatefulWidget{
+class RegisterPage extends StatefulWidget{
   final Function()? onTap;
-  LoginPage({super.key, required this.onTap});
+  const RegisterPage({super.key, required this.onTap});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   final emailController = TextEditingController();
 
   final passwordController = TextEditingController();
-
+  final confirmPasswordController = TextEditingController();
   // errormessage
   void showErrorMessage(String message) {
       showDialog(
@@ -39,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
     }
 
 
-  void signUserIn() async{
+  void signUserUp() async{
     showDialog(context: context, builder: (context){
       return const Center(
         child: CircularProgressIndicator(),
@@ -48,12 +48,20 @@ class _LoginPageState extends State<LoginPage> {
       },
     );
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: emailController.text, 
-      password: passwordController.text,
-      );
+      if (passwordController.text == confirmPasswordController.text){
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.text, 
+        password: passwordController.text,
+        );
+         Navigator.pop(context);
+      }
+      else{
+
+        Navigator.pop(context);
+        showErrorMessage("Passwords do not match");
+      }
       /// pop loading circle
-      Navigator.pop(context);
+      
     } on FirebaseAuthException catch (e){
       // pop loading circle
       Navigator.pop(context);
@@ -61,8 +69,6 @@ class _LoginPageState extends State<LoginPage> {
     } 
   } 
     
- // sin in user in
-  void signUp(){}
 
   @override
   Widget build(BuildContext context){
@@ -76,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(height: 50,),
             
               Text(
-                'Welcome back you\'ve been missed!',
+                'Lets get the adverture started!',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize:  16,
@@ -89,23 +95,27 @@ class _LoginPageState extends State<LoginPage> {
             
             MyTextField(controller: passwordController, hintText: 'Password', obsureText: true),
             const SizedBox(height: 10,),
+            // confirm password
+            MyTextField(controller: confirmPasswordController, hintText: 'Confirm Password', obsureText: true),
+            const SizedBox(height: 10,),
+            
             MyButton(
-              text: "Log in",
-              onTap: signUserIn,
+              text: 'Sign up',
+              onTap: signUserUp,
             ),
             const SizedBox(height: 50),
             
             // sign up
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('Not a member?'),
+              children:[
+                Text('Already have an account?'),
 
-                const SizedBox(width: 4),
-                GestureDetector.new(
+                 SizedBox(width: 4),
+                 GestureDetector.new(
                   onTap: widget.onTap,
                   child:  Text(
-                    'Register now',
+                    'Log in',
                     style: TextStyle(
                       color: Colors.blue, fontWeight: FontWeight.bold
                       ),
