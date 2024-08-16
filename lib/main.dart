@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:sidequest/login.dart';
 import 'firebase_options.dart';
-import 'location_page.dart';
 
 
 void main() {
