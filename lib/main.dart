@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:sidequest/login.dart';
 import 'firebase_options.dart';
 import 'location_page.dart';
 
@@ -17,35 +18,7 @@ class MyApp extends StatelessWidget{
   Widget build(BuildContext context){
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        
-        backgroundColor: Colors.blue,
-        body:  Center(
-          child: GestureDetector(
-            onTap: (){
-              print("hello");
-            },
-            child: Container(
-              height: 300,
-              width: 300,
-              decoration: BoxDecoration(
-                color: Colors.deepPurple,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              padding: EdgeInsets.all(125),
-              child: Text(
-                "SIDEQUEST",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 14,
-                ),
-              ),
-            
-            
-            ),
-          ),
-        ),
-      ),
+      home: LoginPage(),
     );
   }
 }
