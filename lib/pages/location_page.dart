@@ -3,6 +3,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:sidequest/components/my_button.dart';
 import 'dart:async';
 
 import '../main.dart';
@@ -146,6 +147,7 @@ class _NearbyDevicesPageState extends State<NearbyDevicesPage> {
     }
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -164,13 +166,24 @@ class _NearbyDevicesPageState extends State<NearbyDevicesPage> {
             ElevatedButton(
               onPressed: _updateLocationAndCheck,
               child: Text('Check Now'),
+
+            
             ),
+             
+         SizedBox(height: 20),
+        ElevatedButton(
+        onPressed: () {
+        Navigator.pushNamed(context, '/locationpage');
+       },
+       child: Text("Start Quest"),
+),
             
           ],
         ),
       ),
     );
   }
+  
 
   Future<void> _checkNearbyDevices(Position myPosition) async {
     try {

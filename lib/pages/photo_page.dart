@@ -5,19 +5,21 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:io';
 
+import 'package:sidequest/main.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class PhotoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Photo Sharing App',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: PhotoFeedScreen(),
+      home: PhotoPage(),
     );
   }
 }

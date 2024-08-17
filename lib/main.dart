@@ -6,6 +6,7 @@ import 'package:sidequest/pages/auth_page.dart';
 import 'package:sidequest/pages/home_page.dart';
 import 'package:sidequest/pages/location_page.dart';
 import 'package:sidequest/pages/login.dart';
+import 'package:sidequest/pages/photo_page.dart';
 import 'package:sidequest/pages/profile.dart';
 import 'package:sidequest/pages/quest.dart';
 import 'package:sidequest/pages/settings.dart';
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget{
         '/profilepage': (context) => ProfilePage(),
         '/questpage': (context) => QuestsPage(),
         '/locationpage': (context) => LocationPage(),
+        '/photopage': (context) => PhotoFeedScreen(),
       }
     );
   }
