@@ -3,6 +3,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'dart:async';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -64,11 +65,19 @@ class _NearbyDevicesPageState extends State<NearbyDevicesPage> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   int _nearbyDevices = 0;
   bool _isLocationPermissionGranted = false;
+  Timer? _timer;
+  Position? _lastKnownPosition;
 
   @override
   void initState() {
     super.initState();
     _checkLocationPermission();
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
   }
 
   Future<void> _checkLocationPermission() async {
@@ -98,36 +107,25 @@ class _NearbyDevicesPageState extends State<NearbyDevicesPage> {
     setState(() {
       _isLocationPermissionGranted = true;
     });
+
+    // Start periodic checking
+    _startPeriodicChecking();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Nearby Devices')),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if (_isLocationPermissionGranted)
-              ElevatedButton(
-                onPressed: _recordLocation,
-                child: Text('Record My Location'),
-              )
-            else
-              Text('Location permission not granted'),
-            SizedBox(height: 20),
-            Text('Nearby Devices: $_nearbyDevices'),
-          ],
-        ),
-      ),
-    );
+  void _startPeriodicChecking() {
+    // Check every 30 seconds
+    _timer = Timer.periodic(Duration(seconds: 30), (timer) {
+      _updateLocationAndCheck();
+    });
   }
 
-  Future<void> _recordLocation() async {
+  Future<void> _updateLocationAndCheck() async {
     try {
       Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high,
       );
+
+      _lastKnownPosition = position;
 
       User? user = _auth.currentUser;
       if (user != null) {
@@ -142,8 +140,33 @@ class _NearbyDevicesPageState extends State<NearbyDevicesPage> {
         print('User not logged in');
       }
     } catch (e) {
-      print('Error recording location: $e');
+      print('Error updating location: $e');
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Nearby Devices')),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (_isLocationPermissionGranted)
+              Text('Checking for nearby devices every 30 seconds')
+            else
+              Text('Location permission not granted'),
+            SizedBox(height: 20),
+            Text('Nearby Devices: $_nearbyDevices'),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: _updateLocationAndCheck,
+              child: Text('Check Now'),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   Future<void> _checkNearbyDevices(Position myPosition) async {
