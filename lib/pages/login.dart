@@ -25,13 +25,15 @@ class _LoginPageState extends State<LoginPage> {
        context: context,
        builder: (context) {
         return  AlertDialog(
-          backgroundColor: Colors.grey,
+          backgroundColor: Color(0xEB92D4F0),
           title: Center(
             child: Text(
               message,
-              style: const TextStyle(color: Colors.black),
-            ),
-          )
+              style: const TextStyle(
+                color: Colors.black,
+                fontFamily: 'Itim')
+                )
+                ),
           
         );
        },
@@ -126,7 +128,7 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               )
             ],
-                    ),
+            ),
           ),
       ),      
     ),
