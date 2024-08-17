@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:sidequest/pages/auth_page.dart';
 import 'package:sidequest/pages/home_page.dart';
 import 'package:sidequest/pages/login.dart';
+import 'package:sidequest/pages/proximity_detection_page.dart';
 import 'pages/firebase_options.dart';
 
 
@@ -13,17 +14,15 @@ void main() async{
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget{
-  const MyApp({super.key});
-  
+class MyApp extends StatelessWidget {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: AuthPage(),
+      title: 'Proximity Detection Demo',
+      home: ProximityDetectionPage(),
     );
   }
 }

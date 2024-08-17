@@ -7,9 +7,28 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:787419964167:android:7dcae52f2e372466759ba2",
+        "mobilesdk_app_id": "1:787419964167:android:317769c0ebbc0b71759ba2",
         "android_client_info": {
           "package_name": "com.example.sidequest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPIvkSXh0YNxFBbTHVvAAIoouNhZ_SFDU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787419964167:android:7dcae52f2e372466759ba2",
+        "android_client_info": {
+          "package_name": "sidequest.app"
         }
       },
       "oauth_client": [],
