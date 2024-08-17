@@ -113,7 +113,6 @@ class _RegisterPageState extends State<RegisterPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children:[
-<<<<<<< Updated upstream
                 Text('Already have an account?',
                 style: TextStyle(
                   fontSize: 15,
@@ -122,14 +121,6 @@ class _RegisterPageState extends State<RegisterPage> {
                 ,
 
                  SizedBox(width: 4), 
-=======
-                Text('Already joined?',
-                style: TextStyle(
-                  fontSize: 15,
-                  fontFamily: 'Itim')
-                  ),
-                 SizedBox(width: 4),
->>>>>>> Stashed changes
                  GestureDetector.new(
                   onTap: widget.onTap,
                   child:  Text(
