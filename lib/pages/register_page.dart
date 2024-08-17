@@ -25,7 +25,7 @@ class _RegisterPageState extends State<RegisterPage> {
        context: context,
        builder: (context) {
         return  AlertDialog(
-          backgroundColor: Colors.grey,
+          backgroundColor: Color(0xEB92D4F0),
           title: Center(
             child: Text(
               message,
@@ -73,7 +73,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Color(0xEB92D4F0),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -82,10 +82,11 @@ class _RegisterPageState extends State<RegisterPage> {
                 const SizedBox(height: 50,),
             
               Text(
-                'Lets get the adverture started!',
+                'Welcome back you\'ve been missed!',
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize:  16,
+                  fontSize:  20,
+                  fontFamily: 'Itim'
                 ),
               ),
               const SizedBox(height: 25),
@@ -109,7 +110,12 @@ class _RegisterPageState extends State<RegisterPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children:[
-                Text('Already have an account?'),
+                Text('Already have an account?',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontFamily: 'Itim'),
+                  )
+                ,
 
                  SizedBox(width: 4),
                  GestureDetector.new(
