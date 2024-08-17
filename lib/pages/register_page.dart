@@ -117,7 +117,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   )
                 ,
 
-                 SizedBox(width: 4),
+                 SizedBox(width: 4), 
                  GestureDetector.new(
                   onTap: widget.onTap,
                   child:  Text(
