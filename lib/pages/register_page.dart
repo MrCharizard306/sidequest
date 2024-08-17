@@ -29,7 +29,10 @@ class _RegisterPageState extends State<RegisterPage> {
           title: Center(
             child: Text(
               message,
-              style: const TextStyle(color: Colors.black),
+              style: const TextStyle(
+                color: Colors.black,
+                fontFamily: 'Itim'),
+              
             ),
           )
           
@@ -98,13 +101,13 @@ class _RegisterPageState extends State<RegisterPage> {
             const SizedBox(height: 10,),
             // confirm password
             MyTextField(controller: confirmPasswordController, hintText: 'Confirm Password', obsureText: true),
-            const SizedBox(height: 10,),
+            const SizedBox(height: 30,),
             
             MyButton(
               text: 'Sign up',
               onTap: signUserUp,
             ),
-            const SizedBox(height: 50),
+            const SizedBox(height: 25),
             
             // sign up
             Row(
@@ -123,7 +126,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   child:  Text(
                     'Log in',
                     style: TextStyle(
-                      color: Colors.blue, fontWeight: FontWeight.bold
+                      color: Colors.blue, fontWeight: FontWeight.bold,
+                      fontFamily: 'Itim'
                       ),
                     ),
                 ),
