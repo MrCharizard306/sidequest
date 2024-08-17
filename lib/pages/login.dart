@@ -79,7 +79,8 @@ class _LoginPageState extends State<LoginPage> {
                 'Welcome back you\'ve been missed!',
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize:  16,
+                  fontSize:  20,
+                  fontFamily: 'Itim'
                 ),
               ),
               const SizedBox(height: 25),
@@ -94,20 +95,31 @@ class _LoginPageState extends State<LoginPage> {
               onTap: signUserIn,
             ),
             const SizedBox(height: 50),
+
             
             // sign up
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('Not a member?'),
+              children: [  
+                
+                Text('Not a member?',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontFamily: 'Itim' 
+                ),
+                
+                ),
+                
 
-                const SizedBox(width: 4),
+                SizedBox(width: 4),
                 GestureDetector.new(
                   onTap: widget.onTap,
                   child:  Text(
                     'Register now',
                     style: TextStyle(
-                      color: Colors.blue, fontWeight: FontWeight.bold
+                      color: Colors.blue, fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                      fontFamily: 'Itim'
                       ),
                     ),
                 ),
