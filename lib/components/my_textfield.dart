@@ -22,7 +22,7 @@ class MyTextField extends StatelessWidget {
 
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black, width: 20),  
+                    borderSide: BorderSide(color: Colors.black, width: 1),  
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide:  BorderSide(color: Colors.black

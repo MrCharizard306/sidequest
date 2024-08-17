@@ -24,6 +24,24 @@ class HomePage extends StatelessWidget {
           backgroundColor: Color.fromARGB(235, 255, 255, 255),
           elevation: 0,
         ),
+        body: Padding(
+        padding: const EdgeInsets.all(50.0),
+        child: ExpansionTile(
+          title: const Text(
+            'Current Quest', textAlign: TextAlign.center,
+            style: TextStyle(fontFamily: 'Itim', fontSize: 24)),
+          leading: const Icon(Icons.task),
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                'Go outside and touch grass!!',
+                style: TextStyle(fontSize: 16, fontFamily: 'Itim'),
+              ),
+            ),
+          ],
+        ),
+        ),
         drawer: Drawer(
           child: Column(children: [
               const SizedBox(height: 50),
