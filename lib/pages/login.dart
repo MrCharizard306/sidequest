@@ -25,7 +25,7 @@ class _LoginPageState extends State<LoginPage> {
        context: context,
        builder: (context) {
         return  AlertDialog(
-          backgroundColor: Color(0xEB92D4F0),
+          backgroundColor: Color.fromARGB(235, 255, 255, 255),
           title: Center(
             child: Text(
               message,
@@ -69,10 +69,10 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      backgroundColor: Color(0xEB92D4F0),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Center(
-          child: SingleChildScrollView(
+          child: SingleChildScrollView(   
             child: Column(
               children: [
                 const SizedBox(height: 50,),
