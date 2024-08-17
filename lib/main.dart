@@ -5,6 +5,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:sidequest/pages/auth_page.dart';
 import 'package:sidequest/pages/home_page.dart';
 import 'package:sidequest/pages/login.dart';
+import 'package:sidequest/pages/profile.dart';
+import 'package:sidequest/pages/quest.dart';
+import 'package:sidequest/pages/settings.dart';
 import 'pages/firebase_options.dart';
 
 
@@ -24,6 +27,12 @@ class MyApp extends StatelessWidget{
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: AuthPage(),
+      routes: {
+        '/homepage': (context) => HomePage(),
+        '/settingspage': (context) => SettingsPage(),
+        '/profilepage': (context) => ProfilePage(),
+        '/questpage': (context) => QuestsPage(),
+      }
     );
   }
 }
