@@ -94,7 +94,7 @@ class _ScoreCalculatorState extends State<ScoreCalculator> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Progress Page'),
+        title: Text('Progress Page', style: TextStyle(fontFamily: 'Itim')),
         leading: IconButton(
         icon: Icon(Icons.arrow_back),
         onPressed: () {
@@ -113,10 +113,10 @@ class _ScoreCalculatorState extends State<ScoreCalculator> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text('Raw Score: $rawScore',
-                          style: TextStyle(fontSize: 24)),
+                          style: TextStyle(fontSize: 24, fontFamily: 'Itim' )),
                       SizedBox(height: 10),
                       Text('Calculated Score: ${calculatedScore.toStringAsFixed(2)}',
-                          style: TextStyle(fontSize: 24)),
+                          style: TextStyle(fontSize: 24, fontFamily: 'Itim')),
                       SizedBox(height: 20),
                       Image.asset(
                         imageAsset,
@@ -155,7 +155,7 @@ class _ScoreCalculatorState extends State<ScoreCalculator> {
                       ),
                       SizedBox(height: 10),
                       Text('${xpForNextLevel} XP to next level',
-                          style: TextStyle(fontSize: 16)),
+                          style: TextStyle(fontSize: 16, fontFamily: 'Itim')),
                     ],
                   ),
       ),
