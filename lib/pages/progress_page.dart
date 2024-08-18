@@ -3,25 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'dart:math';
-
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Score Calculator',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: ScoreCalculator(),
-    );
-  }
-}
+import 'package:sidequest/pages/home_page.dart';
 
 class ScoreCalculator extends StatefulWidget {
   const ScoreCalculator({Key? key}) : super(key: key);
@@ -61,24 +43,28 @@ class _ScoreCalculatorState extends State<ScoreCalculator> {
     }
   }
 
-  void setError(String message) {
-    setState(() {
-      errorMessage = message;
-      isLoading = false;
-    });
-  }
-
   void updateScore() {
-    setState(() {
-      if (rawScore <= 100) {
-        calculatedScore = rawScore.toDouble();
-      } else {
-        calculatedScore = 100 + log(rawScore - 99) / log(1.5) * 10;
-      }
-      updateImage();
-      isLoading = false;
-    });
-  }
+     if (mounted) {
+       setState(() {
+         if (rawScore <= 100) {
+           calculatedScore = rawScore.toDouble();
+         } else {
+           calculatedScore = 100 + log(rawScore - 99) / log(1.5) * 10;
+         }
+         updateImage();
+         isLoading = false;
+       });
+     }
+   }
+
+   void setError(String message) {
+     if (mounted) {
+       setState(() {
+         errorMessage = message;
+         isLoading = false;
+       });
+     }
+   }
 
   int get level {
     return (calculatedScore / 50).floor() + 1;
@@ -108,7 +94,15 @@ class _ScoreCalculatorState extends State<ScoreCalculator> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Score Calculator'),
+        title: Text('Progress Page'),
+        leading: IconButton(
+        icon: Icon(Icons.arrow_back),
+        onPressed: () {
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(builder: (context) => HomePage()),
+    );
+  },
+),
       ),
       body: Center(
         child: isLoading

@@ -1,22 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sidequest/main.dart';
+import 'package:sidequest/pages/location_page.dart';
 
-
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Quests',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: QuestsPage(),
-    );
-  }
-}
 class QuestsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -67,7 +52,9 @@ class QuestsPage extends StatelessWidget {
                       child: ElevatedButton(
                         onPressed: () {
                           // Action for accepting the quest
-                          Navigator.pushNamed(context, '/locationpage');
+                          Navigator.of(context).pushReplacement(
+      MaterialPageRoute(builder: (context) => LocationPage()),
+    );
                         },
                         child: Text('Accept', style: TextStyle(fontFamily: 'Itim')),
                       ),

@@ -6,12 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:io';
 
 import 'package:sidequest/main.dart';
-
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(const MyApp());
-}
+import 'package:sidequest/pages/home_page.dart';
 
 class PhotoPage extends StatelessWidget {
   @override
@@ -19,7 +14,7 @@ class PhotoPage extends StatelessWidget {
     return MaterialApp(
       title: 'Photo Sharing App',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: PhotoPage(),
+      home: PhotoFeedScreen(),
     );
   }
 }
@@ -29,32 +24,50 @@ class PhotoFeedScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Photo Feed')),
-      body: StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance
-            .collection('photos')
-            .orderBy('timestamp', descending: true)
-            .snapshots(),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
-          }
+      body: Column(
+        children: [
+          Expanded(
+            child: StreamBuilder<QuerySnapshot>(
+              stream: FirebaseFirestore.instance
+                  .collection('photos')
+                  .orderBy('timestamp', descending: true)
+                  .snapshots(),
+              builder: (context, snapshot) {
+                if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
+                }
 
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          }
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                }
 
-          return ListView(
-            children: snapshot.data!.docs.map((DocumentSnapshot document) {
-              Map<String, dynamic> data = document.data() as Map<String, dynamic>;
-              return PhotoCard(
-                imageUrl: data['url'],
-                caption: data['caption'],
-                userId: data['userId'],
-                timestamp: (data['timestamp'] as Timestamp).toDate(),
-              );
-            }).toList(),
-          );
-        },
+                return ListView(
+                  children: snapshot.data!.docs.map((DocumentSnapshot document) {
+                    Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+                    return PhotoCard(
+                      imageUrl: data['url'],
+                      caption: data['caption'],
+                      userId: data['userId'],
+                      timestamp: (data['timestamp'] as Timestamp).toDate(),
+                    );
+                  }).toList(),
+                );
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: ElevatedButton(
+              child: Text('Go to Home'),
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomePage()),
+                );
+              },
+            ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

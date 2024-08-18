@@ -5,15 +5,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:sidequest/components/my_button.dart';
 import 'package:sidequest/pages/home_page.dart';
+import 'package:sidequest/pages/photo_page.dart';
 import 'dart:async';
 
 import '../main.dart';
-
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(const MyApp());
-}
 
 class LocationPage extends StatelessWidget {
   @override
@@ -23,38 +18,7 @@ class LocationPage extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginPage(),
-    );
-  }
-}
-
-class LoginPage extends StatelessWidget {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-
-  Future<void> _signInAnonymously() async {
-    try {
-      await _auth.signInAnonymously();
-    } catch (e) {
-      print('Error signing in: $e');
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Login')),
-      body: Center(
-        child: ElevatedButton(
-          child: Text('Sign in Anonymously'),
-          onPressed: () async {
-            await _signInAnonymously();
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => NearbyDevicesPage()),
-            );
-          },
-        ),
-      ),
+      home: NearbyDevicesPage(),
     );
   }
 }
@@ -185,7 +149,10 @@ class _NearbyDevicesPageState extends State<NearbyDevicesPage> {
          SizedBox(height: 20),
         ElevatedButton(
         onPressed: () {
-        Navigator.pushNamed(context, '/photopage');
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => PhotoPage()),
+          );
        },
        child: Text("Start Quest"),
 ),

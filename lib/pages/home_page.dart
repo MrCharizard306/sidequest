@@ -1,6 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart'; // change
 import 'package:sidequest/main.dart';
+import 'package:sidequest/pages/progress_page.dart';
+import 'package:sidequest/pages/quest.dart';
+import 'package:sidequest/pages/settings.dart';
 
 void main() {
   runApp(const MyApp());
@@ -47,18 +50,24 @@ class HomePage extends StatelessWidget {
               const SizedBox(height: 50),
             // profile page
             ListTile(
-              leading: Icon(Icons.account_circle),
-              title: Text("Profile", style: TextStyle( fontFamily: 'Itim')),
+              leading: Icon(Icons.bar_chart),
+              title: Text("Progress", style: TextStyle( fontFamily: 'Itim')),
               onTap: () {
                 
-                Navigator.pushNamed(context, '/profilepage');
+                Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => ScoreCalculator()),
+          );
               },
             ),
             ListTile(
               leading: Icon(Icons.book),
               title: Text("Quests", style: TextStyle( fontFamily: 'Itim')),
               onTap: () { 
-                Navigator.pushNamed(context, '/questpage');
+                Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => QuestsPage()),
+          );
               }
             ),
             // settings 
@@ -67,7 +76,10 @@ class HomePage extends StatelessWidget {
               title: Text("Settings", style: TextStyle( fontFamily: 'Itim')),
               onTap: () {
                 
-                Navigator.pushNamed(context, '/settingspage');
+                Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => SettingsPage()),
+          );
               }
             ),
           

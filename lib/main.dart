@@ -10,6 +10,7 @@ import 'package:sidequest/pages/photo_page.dart';
 import 'package:sidequest/pages/profile.dart';
 import 'package:sidequest/pages/quest.dart';
 import 'package:sidequest/pages/settings.dart';
+import 'package:sidequest/pages/progress_page.dart';
 import 'pages/firebase_options.dart';
 
 
@@ -32,10 +33,10 @@ class MyApp extends StatelessWidget{
       routes: {
         '/homepage': (context) => HomePage(),
         '/settingspage': (context) => SettingsPage(),
-        '/profilepage': (context) => ProfilePage(),
+        '/progresspage': (context) => ScoreCalculator(),
         '/questpage': (context) => QuestsPage(),
         '/locationpage': (context) => LocationPage(),
-        '/photopage': (context) => PhotoFeedScreen(),
+        '/photopage': (context) => PhotoPage(),
       }
     );
   }
