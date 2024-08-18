@@ -66,10 +66,11 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-    - assets/images/level1.png
-    - assets/images/level2.png
-    - assets/images/level3.png
-    - assets/images/level4.png
+    - assets/images/level1.JPEG
+    - assets/images/level2.JPEG
+    - assets/images/level3.JPEG
+    - assets/images/level4.JPEG
+    - assets/images/dragon.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

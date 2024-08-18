@@ -76,7 +76,7 @@ class _ScoreCalculatorState extends State<ScoreCalculator> {
    }
 
   int get level {
-    return (calculatedScore / 100).floor() + 1;
+    return (calculatedScore / 50).floor() + 1;
   }
 
   double get xpPercentage {
@@ -89,13 +89,13 @@ class _ScoreCalculatorState extends State<ScoreCalculator> {
 
   void updateImage() {
     if (level <= 1) {
-      imageAsset = 'assets/images/level1.png';
+      imageAsset = 'assets/images/level1.JPEG';
     } else if (level == 2) {
-      imageAsset = 'assets/images/level2.png';
+      imageAsset = 'assets/images/level2.JPEG';
     } else if (level == 3) {
-      imageAsset = 'assets/images/level3.png';
+      imageAsset = 'assets/images/level3.JPEG';
     } else {
-      imageAsset = 'assets/images/level4.png';
+      imageAsset = 'assets/images/level4.JPEG';
     }
   }
 

@@ -13,13 +13,12 @@ import 'package:sidequest/pages/settings.dart';
 import 'package:sidequest/pages/progress_page.dart';
 import 'pages/firebase_options.dart';
 
-import 'package:flutter/rendering.dart';
+
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  debugPaintSizeEnabled = false; 
   runApp(const MyApp());
 }
 
@@ -43,4 +42,3 @@ class MyApp extends StatelessWidget{
   }
 }
 
-    
