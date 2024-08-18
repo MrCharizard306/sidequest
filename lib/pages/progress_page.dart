@@ -4,6 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'dart:math';
 import 'package:sidequest/pages/home_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 
 class ScoreCalculator extends StatefulWidget {
   const ScoreCalculator({Key? key}) : super(key: key);
@@ -27,16 +29,23 @@ class _ScoreCalculatorState extends State<ScoreCalculator> {
 
   void fetchScoreFromFirestore() async {
     try {
+      User? currentUser = FirebaseAuth.instance.currentUser;
+      if (currentUser == null) {
+        setError('No user logged in');
+        return;
+      }
+
       DocumentSnapshot snapshot = await FirebaseFirestore.instance
-          .collection('stats')
-          .doc('check_ins')
+          .collection('deviceCounts')
+          .doc(currentUser.uid)
           .get();
 
       if (snapshot.exists) {
-        rawScore = (snapshot.get('count') as num).toInt();
+        Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+        rawScore = (data['count'] as num).toInt();
         updateScore();
       } else {
-        setError('No score found in Firestore');
+        setError('No score found for this user');
       }
     } catch (e) {
       setError('Error fetching score: $e');
@@ -47,7 +56,7 @@ class _ScoreCalculatorState extends State<ScoreCalculator> {
      if (mounted) {
        setState(() {
          if (rawScore <= 100) {
-           calculatedScore = rawScore.toDouble();
+           calculatedScore = 100 + rawScore.toDouble();
          } else {
            calculatedScore = 100 + log(rawScore - 99) / log(1.5) * 10;
          }
