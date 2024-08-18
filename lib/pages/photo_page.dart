@@ -23,7 +23,9 @@ class PhotoFeedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Photo Feed')),
+      appBar: AppBar(title: 
+      Text('Photo Feed',  style: TextStyle(fontFamily: 'Itim'
+      ))),
       body: Column(
         children: [
           Expanded(
@@ -58,7 +60,7 @@ class PhotoFeedScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: ElevatedButton(
-              child: Text('Go to Home'),
+              child: Text('Go to Home', style: TextStyle(fontFamily: 'Itim')),
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
@@ -193,7 +195,7 @@ class _PhotoSharingScreenState extends State<PhotoSharingScreen> {
             ),
             ElevatedButton(
               onPressed: uploadImage,
-              child: Text('Upload Image'),
+              child: Text('Upload Image', style: TextStyle(fontFamily: 'Itim')),
             ),
           ],
         ),
