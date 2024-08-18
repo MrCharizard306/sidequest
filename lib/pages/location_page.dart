@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:sidequest/components/my_button.dart';
+import 'package:sidequest/pages/home_page.dart';
 import 'dart:async';
 
 import '../main.dart';
@@ -151,7 +152,18 @@ class _NearbyDevicesPageState extends State<NearbyDevicesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Nearby Devices')),
+      appBar: AppBar(title: Text('Nearby Devices'),
+      leading: IconButton(
+        icon: Icon(Icons.arrow_back),
+        onPressed: () {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomePage()),
+      );
+    }
+  ),
+      ),
+      
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -162,7 +174,7 @@ class _NearbyDevicesPageState extends State<NearbyDevicesPage> {
               Text('Location permission not granted'),
             SizedBox(height: 20),
             Text('Nearby Devices: $_nearbyDevices'),
-            SizedBox(height: 20),
+            SizedBox(height: 20), 
             ElevatedButton(
               onPressed: _updateLocationAndCheck,
               child: Text('Check Now'),
@@ -173,7 +185,7 @@ class _NearbyDevicesPageState extends State<NearbyDevicesPage> {
          SizedBox(height: 20),
         ElevatedButton(
         onPressed: () {
-        Navigator.pushNamed(context, '/locationpage');
+        Navigator.pushNamed(context, '/photopage');
        },
        child: Text("Start Quest"),
 ),
