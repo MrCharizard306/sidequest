@@ -184,6 +184,15 @@ class _NearbyDevicesPageState extends State<NearbyDevicesPage> {
         }
       }
 
+      // Store the count in Firebase
+      User? user = _auth.currentUser;
+      if (user != null) {
+        await _firestore.collection('deviceCounts').doc(user.uid).set({
+          'count': count,
+          'timestamp': FieldValue.serverTimestamp(),
+        }, SetOptions(merge: true));
+      }
+
       setState(() {
         _nearbyDevices = count;
       });
