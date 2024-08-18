@@ -116,7 +116,7 @@ class _NearbyDevicesPageState extends State<NearbyDevicesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Nearby Devices'),
+      appBar: AppBar(title: Text('Nearby Devices', style: TextStyle(fontFamily: 'Itim')),
       leading: IconButton(
         icon: Icon(Icons.arrow_back),
         onPressed: () {
@@ -133,19 +133,17 @@ class _NearbyDevicesPageState extends State<NearbyDevicesPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (_isLocationPermissionGranted)
-              Text('Checking for nearby devices every 30 seconds')
-            else
-              Text('Location permission not granted'),
+              Text('Checking for nearby devices every 30 seconds', style: TextStyle(fontFamily: 'Itim'))
+          else
+              Text('Location permission not granted', style: TextStyle(fontFamily: 'Itim')),
             SizedBox(height: 20),
-            Text('Nearby Devices: $_nearbyDevices'),
+            Text('Nearby Devices: $_nearbyDevices', style: TextStyle(fontFamily: 'Itim')),
             SizedBox(height: 20), 
             ElevatedButton(
               onPressed: _updateLocationAndCheck,
-              child: Text('Check Now'),
-
-            
+              child: Text('Check Now', style: TextStyle(fontFamily: 'Itim')),
             ),
-             
+          
          SizedBox(height: 20),
         ElevatedButton(
         onPressed: () {
@@ -154,7 +152,7 @@ class _NearbyDevicesPageState extends State<NearbyDevicesPage> {
           MaterialPageRoute(builder: (context) => PhotoPage()),
           );
        },
-       child: Text("Start Quest"),
+       child: Text("Start Quest", style: TextStyle(fontFamily: 'Itim')),
 ),
             
           ],
