@@ -56,9 +56,9 @@ class _ScoreCalculatorState extends State<ScoreCalculator> {
      if (mounted) {
        setState(() {
          if (rawScore <= 100) {
-           calculatedScore = 100 + rawScore.toDouble();
+           calculatedScore = 100 + (rawScore.toDouble());
          } else {
-           calculatedScore = 100 + log(rawScore - 99) / log(1.5) * 10;
+           calculatedScore = 100 + rawScore*1.2;
          }
          updateImage();
          isLoading = false;
@@ -76,7 +76,7 @@ class _ScoreCalculatorState extends State<ScoreCalculator> {
    }
 
   int get level {
-    return (calculatedScore / 50).floor() + 1;
+    return (calculatedScore / 100).floor() + 1;
   }
 
   double get xpPercentage {
@@ -121,16 +121,15 @@ class _ScoreCalculatorState extends State<ScoreCalculator> {
                 : Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('Raw Score: $rawScore',
-                          style: TextStyle(fontSize: 24, fontFamily: 'Itim' )),
+
                       SizedBox(height: 10),
-                      Text('Calculated Score: ${calculatedScore.toStringAsFixed(2)}',
+                      Text(' Score: ${calculatedScore.toStringAsFixed(2)}',
                           style: TextStyle(fontSize: 24, fontFamily: 'Itim')),
                       SizedBox(height: 20),
                       Image.asset(
                         imageAsset,
-                        width: 150,
-                        height: 150,
+                        width: 200,
+                        height: 200,
                         errorBuilder: (context, error, stackTrace) {
                           print('Error loading image: $error');
                           return Column(

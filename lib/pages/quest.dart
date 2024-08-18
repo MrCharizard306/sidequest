@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sidequest/main.dart';
+import 'package:sidequest/pages/home_page.dart';
 import 'package:sidequest/pages/location_page.dart';
 
 class QuestsPage extends StatelessWidget {
@@ -8,6 +9,17 @@ class QuestsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Quests', style: TextStyle(fontFamily: 'Itim')),
+        leading: IconButton(
+        icon: Icon(Icons.arrow_back),
+        onPressed: () {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomePage()),
+      );
+    }
+  ),
+      
+        
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
