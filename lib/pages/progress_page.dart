@@ -129,8 +129,8 @@ class _ScoreCalculatorState extends State<ScoreCalculator> {
                       SizedBox(height: 20),
                       Image.asset(
                         imageAsset,
-                        width: 100,
-                        height: 100,
+                        width: 150,
+                        height: 150,
                         errorBuilder: (context, error, stackTrace) {
                           print('Error loading image: $error');
                           return Column(
