@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Color.fromARGB(235, 255, 255, 255),
         appBar: AppBar(
-          title: const Text("SideQuests"),
+          title: const Text("SideQuests", style: TextStyle(fontSize: 30.0, fontFamily: 'Itim')),
           backgroundColor: Color.fromARGB(235, 255, 255, 255),
           elevation: 0,
         ),
@@ -74,7 +74,7 @@ class HomePage extends StatelessWidget {
             const Spacer(),
             ListTile(
               leading: const Icon(Icons.logout),
-              title: const Text("Logout"),
+              title: const Text("Logout", style: TextStyle(fontFamily: 'Itim')),
               onTap: () {
                 
                 signoutUser();
