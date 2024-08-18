@@ -60,7 +60,7 @@ class PhotoFeedScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: ElevatedButton(
-              child: Text('Complete Quest', style: TextStyle(fontFamily: 'Itim')),
+              child: Text('Finish Quest', style: TextStyle(fontFamily: 'Itim')),
               onPressed: () {
                 Navigator.pushReplacement(
                   context,

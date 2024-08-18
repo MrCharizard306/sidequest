@@ -56,9 +56,9 @@ class _ScoreCalculatorState extends State<ScoreCalculator> {
      if (mounted) {
        setState(() {
          if (rawScore <= 100) {
-           calculatedScore = 100 + rawScore.toDouble();
+           calculatedScore = 100 + (rawScore.toDouble());
          } else {
-           calculatedScore = 100 + log(rawScore - 99) / log(1.5) * 10;
+           calculatedScore = 100 + rawScore*1.2;
          }
          updateImage();
          isLoading = false;
@@ -89,13 +89,13 @@ class _ScoreCalculatorState extends State<ScoreCalculator> {
 
   void updateImage() {
     if (level <= 1) {
-      imageAsset = 'assets/images/level1.png';
+      imageAsset = 'assets/images/level1.JPEG';
     } else if (level == 2) {
-      imageAsset = 'assets/images/level2.png';
+      imageAsset = 'assets/images/level2.JPEG';
     } else if (level == 3) {
-      imageAsset = 'assets/images/level3.png';
+      imageAsset = 'assets/images/level3.JPEG';
     } else {
-      imageAsset = 'assets/images/level4.png';
+      imageAsset = 'assets/images/level4.JPEG';
     }
   }
 
@@ -121,16 +121,15 @@ class _ScoreCalculatorState extends State<ScoreCalculator> {
                 : Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('Raw Score: $rawScore',
-                          style: TextStyle(fontSize: 24, fontFamily: 'Itim' )),
+
                       SizedBox(height: 10),
-                      Text('Calculated Score: ${calculatedScore.toStringAsFixed(2)}',
+                      Text(' Score: ${calculatedScore.toStringAsFixed(2)}',
                           style: TextStyle(fontSize: 24, fontFamily: 'Itim')),
                       SizedBox(height: 20),
                       Image.asset(
                         imageAsset,
-                        width: 150,
-                        height: 150,
+                        width: 200,
+                        height: 200,
                         errorBuilder: (context, error, stackTrace) {
                           print('Error loading image: $error');
                           return Column(

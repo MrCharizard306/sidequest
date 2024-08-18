@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
             'Current Quest', textAlign: TextAlign.center,
             style: TextStyle(fontFamily: 'Itim', fontSize: 24)),
           leading: const Icon(Icons.task),
-          children: <Widget>[
+          children:[
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
@@ -42,9 +42,18 @@ class HomePage extends StatelessWidget {
                 style: TextStyle(fontSize: 16, fontFamily: 'Itim'),
               ),
             ),
+            Center(
+              child: Image.asset('assets/images/dragon.png',
+              width: 200,
+              height: 200,
+              
+              ),
+            )
           ],
         ),
         ),
+
+        
         drawer: Drawer(
           child: Column(children: [
               const SizedBox(height: 50),
